@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .div {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div"></div>
+    <button id="button">change</button>
+  </body>
+  <script>
+    function changeColor() {
+      document.getElementById("button").addEventListener("click", function () {
+        document.getElementsByClassName("div")[0].style.backgroundColor = "red";
+      });
+      console.log(document);
+      fetch("jsonplaceholder.");
+    }
+
+    changeColor();
+    var startTime = performance.now();
+    fetch("http://jsonplaceholder.typicode.com/posts").then(res);
+    var endTime = performance.now();
+    console.log(endTime - startTime);
+
+    function res(response) {
+      response.json().then((data) => {
+        // data.map((element) => {
+        //   document.getElementById(
+        //     "div"
+        //   ).innerHTML += `<div><h1>${element.title}</h1><p>${element.body}</p></div>`;
+        // });
+
+        for (let i = 0; i < data.length; ++i) {
+          document.getElementById(
+            "div"
+          ).innerHTML += `<div><h1>${data[i].title}</h1><p>${data[i].body}</p></div>`;
+        }
+      });
+    }
+
+    function callCallback(callback) {
+      let a = 200;
+
+      setTimeout(() => {}, 2000);
+      a++;
+
+      callback("Vikas");
+      a++;
+    }
+
+    callCallback((param) => {
+      console.log(param);
+    });
+  </script>
+</html>
